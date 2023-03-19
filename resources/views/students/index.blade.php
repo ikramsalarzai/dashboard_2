@@ -51,7 +51,8 @@
                         </td>
                         <td>
                             <small class="text-primary text-capitalize">
-                                <span>Edit</span>
+                                 <a class="text-info" href="{{route('students.edit',$student->id)}}">Edit</a>
+                                <a href="{{route('students.show',$student->id)}}">Details</a>
                             </small>
                         </td>
                     </tr>

@@ -46,9 +46,10 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function show(Student $student)
+    public function show( $id)
     {
-        //
+        $student = Student::where('id', $id)->first();
+        return view('students.show', compact(['student']));
     }
 
     /**
@@ -57,9 +58,10 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit($id)
     {
-        //
+        $student = Student::where('id', $id)->first();
+        return view('students.edit', compact(['student']));
     }
 
     /**
