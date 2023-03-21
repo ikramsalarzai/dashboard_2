@@ -21,25 +21,22 @@
                 <dd>
                     <strong>Learner Name: </strong>{{$student->name}}
                 </dd>
-
                 <dd>
                     <strong>Learner Number: </strong>{{$student->learner_number}}
                 </dd>
-
                 <dd>
                     <strong>Qualification Name: </strong>{{$student->course_name}}
                 </dd>
                 <dd>
                     <strong>SQA Reference: </strong>{{$student->sqa}}
                 </dd>
-
                 <dd>
-                    <strong>Date Awarded: </strong>0{{$student->date}}
-                </dd>
+                    <strong>Date Awarded: </strong>
+                    {{ date('j/m/Y', strtotime($student->date)) }}
+                </dd>   
                 <dd>
                     <strong>Certificate log Number: </strong>{{$student->certificate}}
                 </dd>
-
             </dl>
         </div>
     </div>
