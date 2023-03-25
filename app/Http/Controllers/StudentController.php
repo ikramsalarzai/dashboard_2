@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 
@@ -15,7 +16,7 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::orderBy('ID', 'DESC')->get();
-        return view('students.index',compact(['students']));
+        return view('students.index', compact(['students']));
     }
 
     /**
@@ -36,7 +37,7 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-         $student = Student::create($request->all());
+        $student = Student::create($request->all());
         return redirect(route('students.index'));
     }
 
@@ -46,7 +47,7 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function show( $id)
+    public function show($id)
     {
         $student = Student::where('id', $id)->first();
         return view('students.show', compact(['student']));
@@ -71,11 +72,13 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Student $student)
     {
-        $student = Student::create($request->all());
-        return redirect(route('students.index'));
-    
+        $student->update($request->all());
+        // return redirect(route('students.index'));
+
+        $student = Student::where('id', $student->id)->first();
+        return view('students.show', compact(['student']));
     }
 
     /**

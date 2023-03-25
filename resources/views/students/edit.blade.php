@@ -14,30 +14,36 @@
                             <div class="col-sm-6 mb-3">
                                 <div class="form-group">
                                     <label for="firstname" class="form-label">Learner Number</label>
-                                    <input type="text" name="learner_number" required class="form-control" id="">
+                                    <input type="text" name="learner_number" required class="form-control" value="{{$student->learner_number
+                                    }}"  id="">
                                 </div>
                             </div>
                             <div class="col-sm-6 mb-3">
                                 <label for="email" class="form-label">Name</label>
-                                <input type="text" name="name" class="form-control" id="">
+                                <input type="text" value="{{$student->name
+                                    }}" name="name" class="form-control" id="">
                             </div>
                             <div class="col-sm-6 mb-3">
                                 <div class="form-group">
                                     <label for="firstname" class="form-label">Course Name</label>
-                                    <input type="text" name="course_name" class="form-control" id="">
+                                    <input type="text" name="course_name" class="form-control" value="{{$student->course_name
+                                    }}" id="">
                                 </div>
                             </div>
                             <div class="col-sm-6 mb-3">
                                 <label for="email" class="form-label">SQA Reference</label>
-                                <input type="text" name="sqa" class="form-control" id="">
+                                <input value="{{$student->sqa
+                                    }}" type="text" name="sqa" class="form-control" id="">
                             </div>
                             <div class="col-sm-6 mb-3">
                                 <label for="email" class="form-label">Date Awarded</label>
-                                <input type="date" name="date" class="form-control" id="">
+                                <input type="date" value="{{$student->date
+                                    }}" name="date" class="form-control" id="">
                             </div>
                             <div class="col-sm-6 mb-3">
                                 <label for="email" class="form-label">Certificate Number</label>
-                                <input type="text" name="certificate" class="form-control" id="">
+                                <input type="text" name="certificate" class="form-control" value="{{$student->certificate
+                                    }}" id="">
                             </div>
                         </div>
                         <div class="mt-2">
