@@ -71,9 +71,11 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(Request $request, $id)
     {
-        //
+        $student = Student::create($request->all());
+        return redirect(route('students.index'));
+    
     }
 
     /**
