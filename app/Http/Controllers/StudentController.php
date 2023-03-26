@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 
@@ -16,7 +15,7 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::orderBy('ID', 'DESC')->get();
-        return view('students.index', compact(['students']));
+        return view('students.index',compact(['students']));
     }
 
     /**
@@ -37,7 +36,13 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        $student = Student::create($request->all());
+        $uid = substr(md5(time()), 0, 24);
+        $uid=strtoupper($uid);
+
+        $input = $request->all();
+        $input['uid'] = $uid;
+
+         $student = Student::create($input);
         return redirect(route('students.index'));
     }
 
@@ -47,9 +52,10 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show( $id)
     {
-        $student = Student::where('id', $id)->first();
+        $student = Student::where('learner_number', $id)->first();
+
         return view('students.show', compact(['student']));
     }
 
@@ -59,7 +65,7 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+     public function edit($id)
     {
         $student = Student::where('id', $id)->first();
         return view('students.edit', compact(['student']));
@@ -75,11 +81,27 @@ class StudentController extends Controller
     public function update(Request $request, Student $student)
     {
         $student->update($request->all());
-        // return redirect(route('students.index'));
+        return redirect(route('students.index'));
 
-        $student = Student::where('id', $student->id)->first();
+      //  $student = Student::where('id', $student->id)->first();
+    //    return view('students.show', compact(['student']));
+        
+        return redirect(route('students.index'));
+    }
+    public function detail($id)
+    {
+        $student = Student::where('uid', $id)->first();
+
         return view('students.show', compact(['student']));
     }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Student  $student
+     * @return \Illuminate\Http\Response
+     */
+   
 
     /**
      * Remove the specified resource from storage.
